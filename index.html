@@ -28,7 +28,13 @@
       .filter((w) => (w!==""))         // remove empty string elem
 
   // TODO
-  const word_array = (text) => []
+  const word_array = (text) =>
+    text
+      .replace (/[ ]+/g," ")
+      .replace (/^ /,"")
+      .replace (/ $/,"")
+      .replace (/(\n)/g, " ")
+      .split (" ")
 
   const sentence_array = (text) =>
       clean_string(text)     
