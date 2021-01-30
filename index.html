@@ -1,5 +1,9 @@
 <!DOCTYPE html><html>
 <head><meta charset="UTF-8">
+<title>Cifras y letras</title>
+<link type="text/css" rel="stylesheet" href="estilo.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 <script type="text/javascript" source="stopwords-es.json"></script>
 <script type="text/javascript">
   const getById = id => document.getElementById(id);
@@ -187,7 +191,7 @@
 <body>
 <h1>Análisis de texto</h1>
 
-Introduzca un texto para analizarlo:<br>
+<p id="intro"> <strong><u>Introduzca un texto para analizarlo:</u></strong></p><br>
 <textarea rows=10 cols=50 id="text" name="text"></textarea>
 <p>
   <button class="count" >Contar</button><!-- TODO-->

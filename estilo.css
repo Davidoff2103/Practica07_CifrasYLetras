@@ -1,0 +1,37 @@
+html{
+    background-color: cornflowerblue;
+    margin-left: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+textarea {
+    width: 50%;
+    font-family: 'Roboto', sans-serif;
+    background-color: lightcyan;
+}
+textarea:hover{
+    background-color:antiquewhite;
+}
+button{
+    border-radius: 5px;
+    font-size: medium;
+    font-family: 'Roboto', sans-serif;
+}
+button:hover{
+    background-color: orange;
+}
+#search:hover{
+    background-color: antiquewhite;
+}
+#intro{
+    margin: 0;
+    font-size: large;
+}
+#view{
+    font-family: 'Roboto', sans-serif;
+    border-radius: 5px;
+    border: 3px solid gold;
+    background: lightblue;
+    height: 80 px;
+    width: 300px;
+    padding: 5px;
+}
