@@ -84,6 +84,19 @@
 
   // TODO
   const word_index = () => {
+    let {text, view} = getIO();
+
+    let ordered_words = 
+      word_array(text)
+        .map(el => el.toLowerCase())
+        .sort();
+
+    let result = 
+      repetitions(ordered_words)
+      .map(el => `${el.s}: ${el.n}`)
+      .join("\n");
+
+    view.innerHTML = result;
   };
 
   const sentence_index = () => {
@@ -122,6 +135,22 @@
 
   // TODO
   const search_words = () => {
+    let {text, view, search} = getIO();
+
+    let ordered_words = 
+      word_array(text)
+        .map(el => el.toLowerCase())
+        .filter(el => el.includes(search.toLowerCase()))
+        .sort();
+
+    let result = `Hay ${ordered_words.length} ocurrencias de la palabra '${search}'.\n\n`
+
+    result +=
+      repetitions(ordered_words)      
+        .map(el => `${el.n} repeticiones de:  ${el.s}`)  
+        .join("\n");                    
+
+    view.innerHTML = result;
   };
 
   const search_sentences = () => {
