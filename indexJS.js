@@ -11,18 +11,18 @@ const getIO = () => ( {
     view: getAll( "#view" )[ 0 ]
 } );
 
-// Leave only words, numbers and correct punctuation chars.
+// Deja solo palabras, números y caracteres de puntuación correctos
 const clean_string = ( text ) =>
     text
-    .replace( /[\n\r\t]+/igm, " " ) // Transform some separators to blanks 
-    .replace( /[^a-zñáéíóú0-9 \.,;:()¿?¡!“”❝❞«»❛❜'‘’\-_]+/igm, "" ) // Only letters, digits & punctuation 
-    .replace( /[ ]+/gm, " " ) // Remove extra blanks
+    .replace( /[\n\r\t]+/igm, " " ) // Transformar algunos separadores en espacios en blanco
+    .replace( /[^a-zñáéíóú0-9 \.,;:()¿?¡!“”❝❞«»❛❜'‘’\-_]+/igm, "" ) // Solo letras, dígitos y puntuación
+    .replace( /[ ]+/gm, " " ) // Eliminar espacios en blanco adicionales
 
 const char_array = ( text ) =>
     clean_string( text )
-    .replace( /[^a-zñáéíóú]+/igm, "" ) // leave only letters
-    .split( "" ) // generate array
-    .filter( ( w ) => ( w !== "" ) ) // remove empty string elem
+    .replace( /[^a-zñáéíóú]+/igm, "" )  // dejar solo letras
+    .split( "" ) // generar matriz
+    .filter( ( w ) => ( w !== "" ) ) // eliminar elementos vacíos de la cadena
 
 // TODO
 const word_array = ( text ) =>
@@ -37,8 +37,8 @@ const sentence_array = ( text ) =>
     clean_string( text )
     .replace( /([\.:;?!\n]+)/gm, "$1+" )
     .split( "+" )
-    .filter( ( w ) => ( w !== "" ) ) // remove empty string elem
-    .map( ( s ) => ( s.replace( /^[ 0-9]+(.*$)/, "$1" ) ) ) // remove empty string elem
+    .filter( ( w ) => ( w !== "" ) ) // eliminar elementos vacíos de la cadena
+    .map( ( s ) => ( s.replace( /^[ 0-9]+(.*$)/, "$1" ) ) ) // eliminar elementos vacíos de la cadena
 
 const repetitions = ( ordered_array ) =>
     ordered_array
@@ -130,27 +130,31 @@ const sentence_index = () => {
 };
 
 const search_letters = () => {
-    let {
-        text,
-        view,
-        search
-    } = getIO();
+        let {
+            text,
+            view,
+            search
+        } = getIO();
+        if ( search.length > 1 ) {
+            let result = `'${ search }' no es una letra.`;
+            view.innerHTML = result;
+        } else {
+            let ordered_letters =
+                char_array( text )
+                .map( el => el.toLowerCase() )
+                .filter( el => el.includes( search.toLowerCase() ) )
+                .sort();
 
-    let ordered_letters =
-        char_array( text )
-        .map( el => el.toLowerCase() )
-        .filter( el => el.includes( search.toLowerCase() ) )
-        .sort();
+            let result = `Hay ${ ordered_letters.length } ocurrencias de la letra '${ search }'.\n\n`
 
-    let result = `Hay ${ordered_letters.length} ocurrencias de la letra '${search}'.\n\n`
+            result +=
+                repetitions( ordered_letters )
+                .map( el => `${ el.n } repeticiones de:  ${ el.s }` )
+                .join( "\n" );
 
-    result +=
-        repetitions( ordered_letters )
-        .map( el => `${el.n} repeticiones de:  ${el.s}` )
-        .join( "\n" );
-
-    view.innerHTML = result;
-};
+            view.innerHTML = result;
+        }
+    };
 
 // TODO
 const search_words = () => {
