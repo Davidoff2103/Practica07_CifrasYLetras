@@ -63,3 +63,14 @@ pre {
 pre:hover {
     background-color: antiquewhite;
 }
+
+.logo {
+    margin: 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.logo:hover {
+    filter: brightness(150%);
+}
