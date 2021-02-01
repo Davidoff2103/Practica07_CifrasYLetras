@@ -1,8 +1,9 @@
-html{
+html {
     background-color: cornflowerblue;
     margin-left: 20px;
     font-family: 'Roboto', sans-serif;
 }
+
 textarea {
     width: 50%;
     font-family: 'Roboto', sans-serif;
@@ -10,17 +11,20 @@ textarea {
     background: lightblue;
     border-radius: 5px;
 }
-textarea:hover{
-    background-color:antiquewhite;
+
+textarea:hover {
+    background-color: antiquewhite;
 }
-button{
+
+button {
     border-radius: 5px;
     font-size: medium;
     font-family: 'Roboto', sans-serif;
     height: 30px;
 }
-button:hover{
-    background-color: orange;
+
+button:hover {
+    background-color: gold;
 }
 
 #search {
@@ -28,17 +32,27 @@ button:hover{
     background: lightblue;
     border-radius: 5px;
 }
-#search:hover{
+
+#search:hover {
     background-color: antiquewhite;
 }
-#intro{
+
+#intro {
     margin: 0;
     font-size: large;
 }
 
+.vaciar {
+    background-color: gold;
+}
+
+.vaciar:hover {
+    background-color: rgb(239, 239, 239);
+}
+
 pre {
     font-family: 'Roboto',
-    sans-serif;
+        sans-serif;
     border-radius: 5px;
     border: 3px solid gold;
     background: lightblue;
